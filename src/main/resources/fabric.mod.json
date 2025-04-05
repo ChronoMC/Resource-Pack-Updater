@@ -3,14 +3,14 @@
 	"id": "mrp",
 	"version": "2.1.0",
 	"name": "mrp",
-	"description": "A mod made to automatically download assets from a server",
+	"description": "A fabric mod that automatically downloads resource pack from a server",
 	"authors": [
-		"Qingha (ZH Zhen)",
-		"Zbx1425 (BX Zhang)"
+		"Zbx1425 (BX Zhang)",
+		"Qingha (ZH Zhen)"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://www.zbx1425.cn",
+		"sources": "https://github.com/ChronoMC/Resource-Pack-Updater"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/mrp/textures/icon.jpeg",
