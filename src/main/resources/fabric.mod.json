@@ -1,0 +1,35 @@
+{
+	"schemaVersion": 1,
+	"id": "mrp",
+	"version": "2.1.0",
+	"name": "mrp",
+	"description": "A mod made to automatically download assets from a server",
+	"authors": [
+		"Qingha (ZH Zhen)",
+		"Zbx1425 (BX Zhang)"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/mrp/textures/icon.jpeg",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.mrpdev.ResourcePackUpdater"
+		]
+	},
+	"mixins": [
+		"mrp.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.12",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
