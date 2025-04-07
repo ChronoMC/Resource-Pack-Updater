@@ -3,11 +3,11 @@
 # certain platforms or Java versions, and provides a first line of defence
 # against bad commits.
 
-name: Build
+name: Build 1.20.1
 on: [pull_request, push]
 
 jobs:
-  build:
+  Build:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout Repository
