@@ -21,7 +21,7 @@ import java.util.function.Supplier;
 public class Config {
 
     public final ConfigItem<String> remoteConfigUrl = new ConfigItem<>(
-            "remoteConfigUrl", JsonElement::getAsString, JsonPrimitive::new, "https://mc.zbx1425.cn/jlp-rp4/client_config.json");
+            "remoteConfigUrl", JsonElement::getAsString, JsonPrimitive::new, "http://127.0.0.1/client_config.json");
 
     public final ConfigItem<List<SourceProperty>> sourceList = new ConfigItem<>(
         "sources",
