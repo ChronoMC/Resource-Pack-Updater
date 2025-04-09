@@ -1,8 +1,8 @@
 {
 	"schemaVersion": 1,
-	"id": "mrp",
+	"id": "resourcepackupdater",
 	"version": "2.1.0",
-	"name": "mrp",
+	"name": "Resource Pack Updater Utility",
 	"description": "A fabric mod that automatically downloads resource pack from a server",
 	"authors": [
 		"Zbx1425 (BX Zhang)",
@@ -13,11 +13,11 @@
 		"sources": "https://github.com/ChronoMC/Resource-Pack-Updater"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/mrp/textures/icon.jpeg",
+	"icon": "assets/resourcepackupdater/textures/icon.jpeg",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.mrpdev.ResourcePackUpdater"
+          "cn.zbx1425.resourcepackupdater.ResourcePackUpdater"
 		]
 	},
 	"mixins": [
