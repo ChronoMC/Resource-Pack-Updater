@@ -15,7 +15,7 @@ public interface GlScreenForm extends ProgressReceiver {
     int LINE_HEIGHT = 30;
 
     static void drawShadowRect(float width, float height, int color) {
-        GlHelper.blit(8, 8, width, height, 0x66000000);
-        GlHelper.blit(0, 0, width, height, color);
+        GlHelper.blitShadow(0, 0, width, height, 8, 8, 0x66000000);
+        GlHelper.blitRounded(0, 0, width, height, 8, color);
     }
 }

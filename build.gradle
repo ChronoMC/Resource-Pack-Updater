@@ -34,7 +34,9 @@ String parchment_version = is_1_19_3 ? "N/A" : new XmlSlurper().parse("https://l
 
 
 rootProject.ext.fabric_loader_version = new JsonSlurper().parse(("https://meta.fabricmc.net/v2/versions/loader/" + minecraft_version).toURL())[0]["loader"]["version"]
+rootProject.ext.forge_version = minecraft_version + "-" + new JsonSlurper().parse(("https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json").toURL())["promos"][minecraft_version + "-latest"]
 rootProject.ext.fabric_api_version = getModrinthVersion("fabric", minecraft_version, "fabric-api")
+rootProject.ext.mod_menu_version = getModrinthVersion("fabric", minecraft_version, "modmenu")
 
 repositories {
     // Add repositories to retrieve artifacts from in here.
@@ -64,7 +66,11 @@ dependencies {
 
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+    modImplementation ("com.terraformersmc:modmenu:${project.mod_menu_version}") {
+        transitive = false
     }
+}
 
 processResources {
     inputs.property "version", project.version

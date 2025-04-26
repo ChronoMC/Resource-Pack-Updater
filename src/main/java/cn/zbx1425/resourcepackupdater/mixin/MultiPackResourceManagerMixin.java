@@ -16,7 +16,6 @@ import java.util.Optional;
 public class MultiPackResourceManagerMixin {
 
     @Inject(at = @At("HEAD"), method = "getResource", cancellable = true)
-
     void getResource(ResourceLocation resourceLocation, CallbackInfoReturnable<Optional<Resource>> cir) {
         if (resourceLocation.getNamespace().equals(ResourcePackUpdater.MOD_ID)) {
             cir.setReturnValue(Optional.of(new PreloadTextureResource(resourceLocation)));

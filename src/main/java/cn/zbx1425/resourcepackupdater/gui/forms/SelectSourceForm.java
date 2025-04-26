@@ -7,6 +7,8 @@ import net.minecraft.client.Minecraft;
 
 import java.io.IOException;
 
+import static cn.zbx1425.resourcepackupdater.gui.gl.GlHelper.CORNER_RADIUS;
+
 public class SelectSourceForm implements GlScreenForm {
 
     public float selectSourceFormWidth = 500, selectSourceFormHeight = 400;
@@ -33,21 +35,28 @@ public class SelectSourceForm implements GlScreenForm {
         GlHelper.drawString(20, 15, selectSourceFormWidth - 40, 50, 18,
                 "Select a Server to Download Resource Pack from\nDon't worry, you can later get back and try another one.", 0xff222222, false, false);
 
+        GlHelper.blitShadow(0, 0, selectSourceFormWidth, selectSourceFormHeight,
+                CORNER_RADIUS, 8, 0x66000000);
+        GlHelper.blitRounded(0, 0, selectSourceFormWidth, selectSourceFormHeight,
+                CORNER_RADIUS, 0xffdee6ea);
+
         for (int i = 0; i < sourceSize; i++) {
+            float btnX = 30;
+            float btnY = 30 + 30 + i * 40;
+            float btnWidth = selectSourceFormWidth - 60;
+            float btnHeight = 30;
+
             if (i == selectedIndex) {
-                GlHelper.blit(30, 30 + 30 + i * 40, selectSourceFormWidth - 60, 30, 0xff63a0c6);
+                GlHelper.blitRounded(btnX, btnY, btnWidth, btnHeight, 4, 0xff63a0c6);
             } else {
-                GlHelper.blit(30, 30 + 30 + i * 40, selectSourceFormWidth - 60, 30, 0xffc0d2db);
+                GlHelper.blitRounded(btnX, btnY, btnWidth, btnHeight, 4, 0xffc0d2db);
             }
-            String btnLabel = i == sourceSize - 1 ? "[Cancel Update]" : ResourcePackUpdater.CONFIG.sourceList.value.get(i).name;
-            GlHelper.drawString(30 + 15, 30 + 30 + i * 40 + 5, selectSourceFormWidth - 90, 40, 20,
-                    btnLabel, 0xff222222, false, false);
+
+            String escBtnHint = "W/S: Select, Enter: Confirm";
+            GlHelper.drawString(20, selectSourceFormHeight - 20, selectSourceFormWidth - 40, 16, 16, escBtnHint, 0xff222222, false, true);
+
+            GlHelper.end();
         }
-
-        String escBtnHint = "W/S: Select, Enter: Confirm";
-        GlHelper.drawString(20, selectSourceFormHeight - 20, selectSourceFormWidth - 40, 16, 16, escBtnHint, 0xff222222, false, true);
-
-        GlHelper.end();
     }
 
     private int heldKey = -1;

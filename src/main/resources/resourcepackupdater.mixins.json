@@ -6,7 +6,8 @@
   "client": [
     "FolderPackResourcesMixin",
     "MinecraftMixin",
-    "MultiPackResourceManagerMixin"
+    "MultiPackResourceManagerMixin",
+    "OptionsMixin"
   ],
   "server": [],
   "injectors": {
