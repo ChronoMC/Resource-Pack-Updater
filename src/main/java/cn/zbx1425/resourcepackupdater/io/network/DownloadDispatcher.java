@@ -45,7 +45,7 @@ public class DownloadDispatcher {
                         task.runBlocking(target.get());
                         if (task.failedAttempts > 0) {
                             delayedProgresses.add(() -> {
-                                progressReceiver.printLog(String.format("Downloading files ... (Retry %d succeed)",
+                                progressReceiver.printLog(String.format("正在下载资源文件...  (因错误而重试的下载：%d 个已成功)",
                                         task.failedAttempts));
                             });
                         }

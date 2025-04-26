@@ -33,7 +33,7 @@ public class SelectSourceForm implements GlScreenForm {
         GlScreenForm.drawShadowRect(selectSourceFormWidth, selectSourceFormHeight, 0xffdee6ea);
 
         GlHelper.drawString(20, 15, selectSourceFormWidth - 40, 50, 18,
-                "Select a Server to Download Resource Pack from\nDon't worry, you can later get back and try another one.", 0xff222222, false, false);
+                "请在此选择里您最近的，或者您想要的资源服务器进行下载资源文件\n选错了也不怕，进入游戏后可以通过 ModMenu 重新选择", 0xff222222, false, false);
 
         GlHelper.blitShadow(0, 0, selectSourceFormWidth, selectSourceFormHeight,
                 CORNER_RADIUS, 8, 0x66000000);
@@ -52,7 +52,7 @@ public class SelectSourceForm implements GlScreenForm {
                 GlHelper.blitRounded(btnX, btnY, btnWidth, btnHeight, 4, 0xffc0d2db);
             }
 
-            String escBtnHint = "W/S: Select, Enter: Confirm";
+            String escBtnHint = "使用 W/S 切换资源服务器, 使用 ENTER 以选择";
             GlHelper.drawString(20, selectSourceFormHeight - 20, selectSourceFormWidth - 40, 16, 16, escBtnHint, 0xff222222, false, true);
 
             GlHelper.end();

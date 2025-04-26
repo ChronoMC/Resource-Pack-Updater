@@ -73,18 +73,6 @@ public class DownloadTask {
     }
 
     public static HttpResponse<InputStream> sendHttpRequest(URI requestUri) throws IOException {
-        /*
-        try {
-            MessageDigest md5 = MessageDigest.getInstance("MD5");
-            byte[] digest = md5.digest((url.getPath() + "?REALLY-BAD-VALIDATION-IDEA")
-                    .getBytes(StandardCharsets.UTF_8));
-            String digestStr = StringUtils.stripEnd(Base64.getEncoder().encodeToString(digest).replace('+', '-').replace('/', '_'), "=");
-            requestUri = new URIBuilder(url.toURI()).addParameter("md5", digestStr).build();
-        } catch (Exception ex) {
-            throw new IOException(ex);
-        }
-         */
-
         HttpRequest httpRequest = HttpRequest.newBuilder(requestUri)
                 .timeout(Duration.ofSeconds(20))
                 .setHeader("User-Agent", "ResourcePackUpdater/" + ResourcePackUpdater.MOD_VERSION + " +https://www.zbx1425.cn")

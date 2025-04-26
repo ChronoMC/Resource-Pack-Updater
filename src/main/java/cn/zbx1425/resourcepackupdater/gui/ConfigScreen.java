@@ -19,7 +19,7 @@ public class ConfigScreen extends Screen {
     private final HashMap<Config.SourceProperty, Button> sourceButtons = new HashMap<>();
 
     public ConfigScreen() {
-        super(Component.translatable("ResourcePackUpdater Config"));
+        super(Component.translatable("资源包更新器基础设置"));
     }
 
     @Override
@@ -30,14 +30,14 @@ public class ConfigScreen extends Screen {
 
         // 添加按钮
         addRenderableWidget(new ModernButton(PADDING, 40, btnWidthInner, 20,
-                Component.translatable("Show Logs from Last Run"), (btn) -> isShowingLog = true));
+                Component.translatable("显示程序日志（调试专用）"), (btn) -> isShowingLog = true));
         addRenderableWidget(new ModernButton(PADDING + btnWidthOuter, 40, btnWidthInner, 20,
-                Component.translatable("Update & Reload"), (btn) -> {
+                Component.translatable("重新下载并更新资源"), (btn) -> {
             assert minecraft != null;
             minecraft.reloadResourcePacks();
         }));
         addRenderableWidget(new ModernButton(PADDING + btnWidthOuter, height - 40, btnWidthInner, 20,
-                Component.translatable("Return"), (btn) -> {
+                Component.translatable("返回"), (btn) -> {
             assert minecraft != null;
             minecraft.setScreen(null);
         }));
@@ -75,7 +75,7 @@ public class ConfigScreen extends Screen {
                 0, 0, 0, 0, this.width, this.height, this.width, this.height);
 
         // 绘制标题
-        guiGraphics.drawCenteredString(font, "Resource Pack Updater", this.width / 2, 20, 0xFFFFFF);
+        guiGraphics.drawCenteredString(font, "资源包更新器", this.width / 2, 20, 0xFFFFFF);
 
         // 绘制分割线
         guiGraphics.fill(this.width / 2 - 100, 35, this.width / 2 + 100, 37, 0xFFFFFFFF);

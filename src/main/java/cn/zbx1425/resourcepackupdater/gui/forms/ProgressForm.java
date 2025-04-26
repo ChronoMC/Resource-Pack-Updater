@@ -120,7 +120,7 @@ public class ProgressForm implements GlScreenForm {
 
         // 绘制提示文本
         String escBtnHint = ResourcePackUpdater.CONFIG.sourceList.value.size() > 1 ?
-                "按住 ESC 取消或使用其他源" : "按住 ESC 取消";
+                "按下 ESC 取消或使用其他源" : "按下 ESC 取消";
         GlHelper.drawString(30, PROGRESS_FORM_HEIGHT - 30, PROGRESS_FORM_WIDTH - 60, 20, 14,
                 escBtnHint, 0xff95a5a6, false, true);
 
