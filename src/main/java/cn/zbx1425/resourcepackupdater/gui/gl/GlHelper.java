@@ -20,8 +20,8 @@ public class GlHelper {
     }
 
     public static final float CORNER_RADIUS = 8.0f;
-    public static final float SHADOW_SIZE = 8.0f;
-    public static final float SHADOW_ALPHA = 0.4f;
+    public static final float SHADOW_SIZE = 4.0f;
+    public static final float SHADOW_ALPHA = 0.2f;
 
     // 渐变色常量
     public static final int[] GRADIENT_COLORS = {
@@ -177,8 +177,8 @@ public class GlHelper {
 
     // 新增绘制阴影方法
     public static void blitShadow(float x, float y, float width, float height, float radius, float shadowSize, int shadowColor) {
-        float SHADOW_STEPS = 16; // 增加阴影层数
-        float stepSize = shadowSize / SHADOW_STEPS;
+        float SHADOW_STEPS = 4; // 增加阴影层数
+        float stepSize = shadowSize * 0.25f;
 
         for (float i = SHADOW_STEPS; i > 0; i--) {
             float currentSize = i * stepSize;
@@ -224,6 +224,30 @@ public class GlHelper {
         int a = (int)(a1 + (a2 - a1) * factor);
 
         return (a << 24) | (r << 16) | (g << 8) | b;
+    }
+
+    public static void blitGaussianBlur(float x, float y, float width, float height, float radius, int passes) {
+        for (int i = 0; i < passes; i++) {
+            float offset = (i + 1) * 2.5f;
+            int alpha = (int)(18f / passes); // 总体透明度约0.07
+            int color = (alpha << 24) | 0xFFFFFF;
+            blitRounded(x - offset, y - offset, width + offset * 2, height + offset * 2, radius + offset, color);
+        }
+    }
+
+    // 字符串截断
+    public static String trimStringToWidth(String text, float maxWidth, float fontSize) {
+        float width = 0;
+        StringBuilder sb = new StringBuilder();
+        for (char c : text.toCharArray()) {
+            width += GlHelper.getStringWidth(String.valueOf(c), fontSize);
+            if (width > maxWidth - GlHelper.getStringWidth("...", fontSize)) {
+                sb.append("...");
+                break;
+            }
+            sb.append(c);
+        }
+        return sb.toString();
     }
 
     public static void blitProgressBar(float x, float y, float width, float height, float progress, float v, int startColor, int endColor) {

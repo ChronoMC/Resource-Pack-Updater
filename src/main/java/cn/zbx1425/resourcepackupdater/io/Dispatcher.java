@@ -41,22 +41,22 @@ public class Dispatcher {
             byte[] remoteChecksum = null;
 
             if (source.hasDirHash) {
-                cb.printLog("正在获取服务器远程目录校验和 ...");
+                cb.printLog("Downloading Remote Directory Checksum ...");
                 remoteChecksum = remoteMetadata.fetchDirChecksum(cb);
-                cb.amendLastLog("完成");
+                cb.amendLastLog("Complete");
                 cb.printLog("Remote directory checksum is " + Hex.encodeHexString(remoteChecksum));
             } else {
                 cb.printLog("This server does not have a directory checksum.");
-                cb.printLog("下载远程服务器元数据 ...");
+                cb.printLog("Downloading Remote Metadata ...");
                 remoteMetadata.fetch(cb);
-                cb.amendLastLog("完成");
+                cb.amendLastLog("Complete");
                 cb.setProgress(0, 0);
             }
             // Now, either checksum or full metadata is fetched, with the encryption switch.
 
-            cb.printLog("正在扫描本地文件 ...");
+            cb.printLog("Scanning local directory ...");
             localMetadata.scanDir(remoteMetadata.encrypt, cb);
-            cb.amendLastLog("完成");
+            cb.amendLastLog("Complete");
             byte[] localChecksum = localMetadata.getDirChecksum();
             cb.printLog("Local directory checksum is " + Hex.encodeHexString(localChecksum));
 
@@ -66,16 +66,16 @@ public class Dispatcher {
             }
             if (remoteChecksum != null) {
                 if (Arrays.equals(localChecksum, remoteChecksum)) {
-                    cb.printLog("所有文件已是最新！");
+                    cb.printLog("The local directory is up to date.");
                     cb.setProgress(1, 1);
                     cb.printLog("");
-                    cb.printLog("已完成！感谢您的等待！");
+                    cb.printLog("Done! Thank you for your patience!");
                     return true;
                 } else {
                     // We haven't fetched the full metadata yet, do it now.
-                    cb.printLog("正在下载远程服务器元数据 ...");
+                    cb.printLog("Downloading Remote Metadata ...");
                     remoteMetadata.fetch(cb);
-                    cb.amendLastLog("完成");
+                    cb.amendLastLog("Complete");
                     cb.setProgress(0, 0);
                 }
             }
@@ -90,7 +90,7 @@ public class Dispatcher {
             cb.printLog(String.format("Found %-3d new files, %-3d to update, %-3d to delete.",
                     filesToCreate.size(), filesToUpdate.size(), filesToDelete.size()));
 
-            cb.printLog("正在创建文件夹和目录 ...");
+            cb.printLog("Creating directories ...");
             for (String dir : dirsToCreate) {
                 Files.createDirectories(Paths.get(baseDir, dir));
             }
@@ -101,10 +101,10 @@ public class Dispatcher {
                 Path dirPath = Paths.get(baseDir, dir);
                 if (Files.isDirectory(dirPath)) FileUtils.deleteDirectory(dirPath.toFile());
             }
-            cb.amendLastLog("完成");
+            cb.amendLastLog("Complete");
 
             remoteMetadata.beginDownloads(cb);
-            cb.printLog("正在下载文件（喵） ... ");
+            cb.printLog("Downloading files ...");
             DownloadDispatcher downloadDispatcher = new DownloadDispatcher(cb);
             for (String file : Stream.concat(filesToCreate.stream(), filesToUpdate.stream()).toList()) {
                 DownloadTask task = new DownloadTask(downloadDispatcher,
@@ -125,7 +125,7 @@ public class Dispatcher {
             cb.setProgress(1, 1);
             cb.printLog("");
             remoteMetadata.endDownloads(cb);
-            cb.printLog("已完成！感谢您的等待！");
+            cb.printLog("Done! Thank you for your patience!");
             return true;
         } catch (GlHelper.MinecraftStoppingException ex) {
             throw ex;
