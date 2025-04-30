@@ -22,7 +22,7 @@ import java.util.function.Supplier;
 public class Config {
 
     public final ConfigItem<String> remoteConfigUrl = new ConfigItem<>(
-            "remoteConfigUrl", JsonElement::getAsString, JsonPrimitive::new, "https://mc.zbx1425.cn/jlp-srp/client_config.json");
+            "remoteConfigUrl", JsonElement::getAsString, JsonPrimitive::new, "https://s.bu7.top:20002/res/client_config.json");
 
     public final ConfigItem<List<SourceProperty>> sourceList = new ConfigItem<>(
         "sources",

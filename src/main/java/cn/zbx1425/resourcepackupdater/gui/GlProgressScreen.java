@@ -7,7 +7,6 @@ import cn.zbx1425.resourcepackupdater.gui.forms.ProgressForm;
 import cn.zbx1425.resourcepackupdater.gui.forms.SelectSourceForm;
 import cn.zbx1425.resourcepackupdater.gui.gl.GlHelper;
 import cn.zbx1425.resourcepackupdater.io.ProgressReceiver;
-import com.mojang.blaze3d.platform.Window;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 

@@ -5,7 +5,8 @@
   "name": "Resource Pack Updating Utility",
   "description": "Updates a resource pack at game launch, or when requested.",
   "authors": [
-    "Zbx1425"
+    "Zbx1425 (Main Author)",
+    "Qingha (Some Modification)"
   ],
   "contact": {
     "homepage": "https://www.zbx1425.cn"
@@ -16,9 +17,6 @@
   "entrypoints": {
     "main": [
       "cn.zbx1425.resourcepackupdater.ResourcePackUpdater"
-    ],
-    "modmenu": [
-      "cn.zbx1425.resourcepackupdater.ModMenuApiImpl"
     ]
   },
   "depends": {
